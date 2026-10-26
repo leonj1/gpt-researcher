@@ -10,7 +10,7 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     environment: tests  # Specify the environment to use for this job
     env:
       # Ensure these environment variables are set for the entire job

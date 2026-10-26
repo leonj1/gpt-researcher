@@ -29,7 +29,7 @@ jobs:
     name: "Build Root Image - ${{ matrix.platform_slash }}"
     # This line makes it possible to cancel a workflow in the middle of a step. Otherwise the step needs to complete first.
     if: ${{ success() || failure() }}
-    runs-on: "${{ matrix.runner_label }}"
+    runs-on: "${{ (matrix.runner_label) == 'ubuntu-latest' && fromJSON('[\"self-hosted\",\"linux\",\"x64\"]') || (matrix.runner_label) == 'ubuntu-22.04-arm' && fromJSON('[\"self-hosted\",\"linux\",\"ARM64\"]') || (matrix.runner_label) }}"
     env:
       # Variables for Docker tokens and authentication
       IMAGE_NAME_GHCR_SUFFIXED: "${{ github.event.repository.name }}"
@@ -125,7 +125,7 @@ jobs:
     name: "Build Frontend Next.js Image - ${{ matrix.platform_slash }}"
     # This line makes it possible to cancel a workflow in the middle of a step. Otherwise the step needs to complete first.
     if: ${{ success() || failure() }}
-    runs-on: "${{ matrix.runner_label }}"
+    runs-on: "${{ (matrix.runner_label) == 'ubuntu-latest' && fromJSON('[\"self-hosted\",\"linux\",\"x64\"]') || (matrix.runner_label) == 'ubuntu-22.04-arm' && fromJSON('[\"self-hosted\",\"linux\",\"ARM64\"]') || (matrix.runner_label) }}"
     env:
       # Variables for Docker tokens and authentication
       IMAGE_NAME_GHCR_SUFFIXED: "${{ github.event.repository.name }}-frontend-nextjs"
@@ -221,7 +221,7 @@ jobs:
     name: "Build MCP Server Image - ${{ matrix.platform_slash }}"
     # This line makes it possible to cancel a workflow in the middle of a step. Otherwise the step needs to complete first.
     if: ${{ success() || failure() }}
-    runs-on: "${{ matrix.runner_label }}"
+    runs-on: "${{ (matrix.runner_label) == 'ubuntu-latest' && fromJSON('[\"self-hosted\",\"linux\",\"x64\"]') || (matrix.runner_label) == 'ubuntu-22.04-arm' && fromJSON('[\"self-hosted\",\"linux\",\"ARM64\"]') || (matrix.runner_label) }}"
     env:
       # Variables for Docker tokens and authentication
       IMAGE_NAME_GHCR_SUFFIXED: "${{ github.event.repository.name }}-mcp-server"
@@ -317,7 +317,7 @@ jobs:
     name: "Build Docs Discord Bot Image - ${{ matrix.platform_slash }}"
     # This line makes it possible to cancel a workflow in the middle of a step. Otherwise the step needs to complete first.
     if: ${{ success() || failure() }}
-    runs-on: "${{ matrix.runner_label }}"
+    runs-on: "${{ (matrix.runner_label) == 'ubuntu-latest' && fromJSON('[\"self-hosted\",\"linux\",\"x64\"]') || (matrix.runner_label) == 'ubuntu-22.04-arm' && fromJSON('[\"self-hosted\",\"linux\",\"ARM64\"]') || (matrix.runner_label) }}"
     env:
       # Variables for Docker tokens and authentication
       IMAGE_NAME_GHCR_SUFFIXED: "${{ github.event.repository.name }}-docs-discord-bot"
